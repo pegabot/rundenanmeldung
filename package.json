@@ -17,6 +17,13 @@
     "start": "node .",
     "generateEnvTypes": "npx gen-env-types .env -o src/types/env.d.ts -e ."
   },
+  "dependencies": {
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "imap-simple": "^5.0.0",
+    "lodash": "^4.17.21",
+    "mailparser": "^3.2.0"
+  },
   "devDependencies": {
     "@types/express": "^4.17.11",
     "@types/imap-simple": "^4.2.4",
@@ -35,12 +42,5 @@
     ],
     "ext": "ts",
     "exec": "yarn build --sourceMap; yarn start"
-  },
-  "dependencies": {
-    "dotenv": "^9.0.2",
-    "express": "^4.17.1",
-    "imap-simple": "^5.0.0",
-    "lodash": "^4.17.21",
-    "mailparser": "^3.2.0"
   }
 }
