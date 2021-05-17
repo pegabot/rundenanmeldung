@@ -11,13 +11,20 @@
   "engines": {
     "node": "14.x"
   },
+  "workspaces": [
+    "src",
+    "ui"
+  ],
+  "private": "true",
   "scripts": {
     "dev": "nodemon .  --signal SIGINT",
     "build": "rm -rf build; tsc",
+    "build:ui": "cd ui; yarn build",
     "start": "node .",
     "generateEnvTypes": "npx gen-env-types .env -o src/types/env.d.ts -e ."
   },
   "dependencies": {
+    "@rjsf/core": "^2.5.1",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "imap-simple": "^5.0.0",
@@ -35,12 +42,12 @@
   "nodemonConfig": {
     "verbose": true,
     "watch": [
-      "src/"
+      "src/**/*.ts"
     ],
     "ignore": [
       "dist/*"
     ],
     "ext": "ts",
-    "exec": "yarn build --sourceMap; yarn start"
+    "exec": "yarn build:ui; yarn build --sourceMap; yarn start"
   }
 }

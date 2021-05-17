@@ -16,5 +16,6 @@ app.get("/ping", (_: express.Request, res: express.Response) => {
 });
 
 app.use(express.static(path.resolve(__dirname, "static")));
+app.use(express.static(path.resolve(__dirname, "../../ui/build")));
 
 export const server = app;
