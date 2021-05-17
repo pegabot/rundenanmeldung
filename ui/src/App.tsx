@@ -9,7 +9,7 @@ import { FormProps } from "@rjsf/core";
 import { JSONSchema7 } from "json-schema";
 import React from "react";
 import { sendData } from "./api/connector";
-import "./App.css";
+import "./css/App.css";
 
 const schema: JSONSchema7 = {
   title: "CONspiracy Rundenanmeldung",
@@ -40,7 +40,7 @@ const submit = (data: FormProps<any>) => {
 function App() {
   return (
     <div className="App">
-      <Form schema={schema} onChange={log("changed")} onSubmit={submit} onError={log("errors")} />
+      <Form className="FormButton" schema={schema} onChange={log("changed")} onSubmit={submit} onError={log("errors")} />
     </div>
   );
 }
