@@ -16,6 +16,6 @@ app.get("/ping", (_: express.Request, res: express.Response) => {
 });
 
 app.use(express.static(path.resolve(__dirname, "static")));
-app.use(express.static(path.resolve(__dirname, "../../ui/build")));
+app.use(express.static(path.resolve(__dirname, "../ui/build")));
 
-export const server = app;
+app.listen(process.env.PORT || 80, () => console.log(`💻 Webserver gestartet!`));
