@@ -40,7 +40,7 @@ const submit = (data: FormProps<any>) => {
 function App() {
   return (
     <div className="App">
-      <Form className="FormButton" schema={schema} onChange={log("changed")} onSubmit={submit} onError={log("errors")} />
+      <Form className="form" schema={schema} onChange={log("changed")} onSubmit={submit} onError={log("errors")} />
     </div>
   );
 }
