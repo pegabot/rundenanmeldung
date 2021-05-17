@@ -5,39 +5,42 @@
  */
 
 import { Form } from "@rjsf/bootstrap-4";
+import { FormProps } from "@rjsf/core";
 import { JSONSchema7 } from "json-schema";
 import React from "react";
+import { sendData } from "./api/connector";
 import "./App.css";
 
 const schema: JSONSchema7 = {
-  title: "A registration form",
+  title: "CONspiracy Rundenanmeldung",
   description: "A simple form example.",
   type: "object",
   required: ["firstName", "lastName"],
   properties: {
     firstName: {
       type: "string",
-      title: "First name",
-      default: "Chuck",
+      title: "Vorname",
     },
     lastName: {
       type: "string",
-      title: "Last name",
-    },
-    telephone: {
-      type: "string",
-      title: "Telephone",
-      minLength: 10,
+      title: "Nachname",
     },
   },
 };
 
 const log = (type: any) => console.log.bind(console, type);
 
+const submit = (data: FormProps<any>) => {
+  sendData({
+    name: `${data.formData.firstName} ${data.formData.lastName}`,
+  });
+  console.log(data);
+};
+
 function App() {
   return (
     <div className="App">
-      <Form schema={schema} onChange={log("changed")} onSubmit={log("submitted")} onError={log("errors")} />
+      <Form schema={schema} onChange={log("changed")} onSubmit={submit} onError={log("errors")} />
     </div>
   );
 }

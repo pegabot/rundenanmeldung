@@ -4,16 +4,23 @@
  * (see https://github.com/pegabot/discord/blob/main/LICENSE for details)
  */
 
+import { json } from "body-parser";
+import cors from "cors";
 import { config } from "dotenv";
 import express from "express";
 import * as path from "path";
+import { sessionRouter } from "./api/session";
 config();
-
 const app = express();
+
+app.use(cors());
+app.use(json());
 
 app.get("/ping", (_: express.Request, res: express.Response) => {
   res.send("Pong!");
 });
+
+app.use("/api/session", sessionRouter);
 
 app.use(express.static(path.resolve(__dirname, "static")));
 app.use(express.static(path.resolve(__dirname, "../ui/build")));
