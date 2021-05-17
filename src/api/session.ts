@@ -15,6 +15,8 @@ sessionRouter.post("/", (req, res) => {
 
   if (!data.name) return res.status(statusCode.BAD_REQUEST).send("missing data!");
 
+  //FIXME: implement the main logic here
+
   console.log(data);
   return res.status(statusCode.OK).end();
 });
