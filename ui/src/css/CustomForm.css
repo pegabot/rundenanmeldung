@@ -4,13 +4,11 @@
  * (see https://github.com/pegabot/rundenanmeldung/blob/main/LICENSE for details)
  */
 
- :root{
-   --cta-color: #b30019
- }
+.container {
+  margin-top: 2em;
+}
 
-.App {
-  text-align: center;
-  max-width: 50%;
-  align-items: center;
-  margin: auto;
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: var(--cta-color);
+  border-color: var(--cta-color);
 }

@@ -9,13 +9,6 @@ import { CustomFormData } from "../../../src/interfaces/CustomFormData";
 
 const apiURL = process.env.API_URL || "";
 
-export const sendData = (data: CustomFormData) => {
-  axios
-    .post(`${apiURL}/api/session`, data)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+export const sendData = async (data: CustomFormData) => {
+  return await axios.post(`${apiURL}/api/session`, data);
 };
