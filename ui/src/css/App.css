@@ -9,8 +9,8 @@
  }
 
 .App {
-  text-align: center;
   max-width: 50%;
   align-items: center;
   margin: auto;
+  margin-left: 25%;
 }

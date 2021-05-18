@@ -4,28 +4,54 @@
  * (see https://github.com/pegabot/rundenanmeldung/blob/main/LICENSE for details)
  */
 
-import { Form } from "@rjsf/bootstrap-4";
-import { FormProps } from "@rjsf/core";
+import { Theme as Bootstrap4Theme } from "@rjsf/bootstrap-4";
+import { FormProps, withTheme } from "@rjsf/core";
 import { JSONSchema7 } from "json-schema";
 import React from "react";
 import { Alert } from "react-bootstrap";
 import { sendData } from "../api/connector";
 import "../css/CustomForm.css";
 
-const schema: JSONSchema7 = {
-  title: "CONspiracy Rundenanmeldung",
-  description: "A simple form example.",
+const Form = withTheme(Bootstrap4Theme);
+
+const dataSchema: JSONSchema7 = {
   type: "object",
-  required: ["firstName", "lastName"],
   properties: {
-    firstName: {
+    sl: {
       type: "string",
-      title: "Vorname",
+      title: "Spielleitung (Discord Name)",
     },
-    lastName: {
+    system: {
       type: "string",
-      title: "Nachname",
+      title: "System",
     },
+    desc: {
+      type: "string",
+      title: "Beschreibe dein Spielrunde.",
+    },
+    startDate: {
+      type: "string",
+      title: "Wann startet deine Spielrunde?",
+      format: "date-time",
+    },
+    endDate: {
+      type: "string",
+      title: "Wann endet deine Spielrunde?",
+      format: "date-time",
+    },
+    numberOfPlayers: {
+      type: "number",
+      title: "Wie viele Spieler können teilnehmen?",
+      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    },
+  },
+};
+
+const uiSchema = {
+  "ui:title": "CONspiracy Rundenanmeldung",
+  "ui:description": "Description",
+  desc: {
+    "ui:widget": "textarea",
   },
 };
 
@@ -63,7 +89,7 @@ export class CustomForm extends React.Component<{}, { completed: boolean; error:
         ) : this.state.completed ? (
           <Alert variant="success">Vielen Dank für deine Einsendung!</Alert>
         ) : (
-          <Form className="form" schema={schema} onChange={this.log("changed")} onSubmit={this.onSubmit} onError={this.onError} />
+          <Form className="form" uiSchema={uiSchema} schema={dataSchema} onChange={this.log("changed")} onSubmit={this.onSubmit} onError={this.onError} />
         )}
       </div>
     );
