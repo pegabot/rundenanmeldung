@@ -10,6 +10,7 @@ import { config } from "dotenv";
 import express from "express";
 import * as path from "path";
 import { sessionRouter } from "./api/session";
+
 config();
 const app = express();
 

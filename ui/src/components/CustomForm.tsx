@@ -17,6 +17,10 @@ const Form = withTheme(Bootstrap4Theme);
 const dataSchema: JSONSchema7 = {
   type: "object",
   properties: {
+    name: {
+      type: "string",
+      title: "Gebe deiner Spielrunde einen Namen",
+    },
     sl: {
       type: "string",
       title: "Spielleitung (Discord Name)",
@@ -39,7 +43,7 @@ const dataSchema: JSONSchema7 = {
       title: "Wann endet deine Spielrunde?",
       format: "date-time",
     },
-    numberOfPlayers: {
+    players: {
       type: "number",
       title: "Wie viele Spieler können teilnehmen?",
       enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -67,9 +71,17 @@ export class CustomForm extends React.Component<{}, { completed: boolean; error:
   onSubmit = async (data: FormProps<any>) => {
     try {
       await sendData({
-        name: `${data.formData.firstName} ${data.formData.lastName}`,
+        name: data.formData.name,
+        gamemaster: data.formData.sl,
+        desc: data.formData.desc,
+        system: data.formData.system,
+        players: data.formData.players,
+        date: `${data.formData.startDate}  - ${data.formData.endDate}`,
+        notes: "",
+        requirements: "",
       });
     } catch (error) {
+      console.log(error);
       this.onError();
     }
 

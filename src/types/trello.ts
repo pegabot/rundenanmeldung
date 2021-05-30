@@ -4,6 +4,13 @@
  * (see https://github.com/pegabot/rundenanmeldung/blob/main/LICENSE for details)
  */
 
-export interface CustomFormData {
+export type Card = {
   name: string;
-}
+  desc: string;
+  gamemaster: string;
+  system: string;
+  players: number;
+  date: string;
+  notes: string;
+  requirements: string;
+};

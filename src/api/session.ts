@@ -6,17 +6,20 @@
 
 import express from "express";
 import statusCode from "http-status-codes";
-import { CustomFormData } from "../interfaces/CustomFormData";
+import { Card } from "../types/trello";
+import { generateCard } from "../utils/trello";
 
 export const sessionRouter = express();
 
-sessionRouter.post("/", (req, res) => {
-  const data: CustomFormData = req.body;
+sessionRouter.post("/", async (req, res) => {
+  const cardData: Card = req.body;
+  console.log(cardData);
 
-  if (!data.name) return res.status(statusCode.BAD_REQUEST).send("missing data!");
+  const error = await generateCard(cardData);
 
-  //FIXME: implement the main logic here
+  console.log(error);
 
-  console.log(data);
+  if (error) return res.status(statusCode.INTERNAL_SERVER_ERROR).send("An error occured!");
+
   return res.status(statusCode.OK).end();
 });

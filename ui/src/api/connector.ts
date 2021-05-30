@@ -5,10 +5,10 @@
  */
 
 import axios from "axios";
-import { CustomFormData } from "../../../src/interfaces/CustomFormData";
+import { Card } from "../../../src/types/trello";
 
 const apiURL = process.env.API_URL || "";
 
-export const sendData = async (data: CustomFormData) => {
+export const sendData = async (data: Card) => {
   return await axios.post(`${apiURL}/api/session`, data);
 };

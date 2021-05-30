@@ -28,7 +28,8 @@
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
-    "http-status-codes": "^2.1.4"
+    "http-status-codes": "^2.1.4",
+    "trello-node-api": "^0.0.9"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
