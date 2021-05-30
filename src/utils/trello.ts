@@ -4,9 +4,12 @@
  * (see https://github.com/pegabot/rundenanmeldung/blob/main/LICENSE for details)
  */
 
+import { config } from "dotenv";
+import find from "find-config";
 import { Card } from "src/types/trello";
 import TrelloNodeAPI from "trello-node-api";
 import { stripIndents } from "./stripIndents";
+config({ path: find(".env", { dir: "ui", dot: true }) || "" });
 
 const trello = new TrelloNodeAPI();
 trello.setApiKey(process.env.TRELLO_API_KEY);

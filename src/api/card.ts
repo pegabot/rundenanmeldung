@@ -9,15 +9,15 @@ import statusCode from "http-status-codes";
 import { Card } from "../types/trello";
 import { generateCard } from "../utils/trello";
 
-export const sessionRouter = express();
+export const CardRouter = express();
 
-sessionRouter.post("/", async (req, res) => {
+CardRouter.post("/", async (req, res) => {
+  if (req.headers["token"] !== process.env.REACT_APP_API_TOKEN) return res.status(statusCode.FORBIDDEN).send("Invalid API Token was used!");
+
   const cardData: Card = req.body;
   console.log(cardData);
 
   const error = await generateCard(cardData);
-
-  console.log(error);
 
   if (error) return res.status(statusCode.INTERNAL_SERVER_ERROR).send("An error occured!");
 

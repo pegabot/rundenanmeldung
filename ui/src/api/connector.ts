@@ -4,11 +4,9 @@
  * (see https://github.com/pegabot/rundenanmeldung/blob/main/LICENSE for details)
  */
 
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { Card } from "../../../src/types/trello";
 
-const apiURL = process.env.API_URL || "";
-
-export const sendData = async (data: Card) => {
-  return await axios.post(`${apiURL}/api/session`, data);
+export const sendData = async (data: Card): Promise<AxiosResponse<any>> => {
+  return await axios.post(`/api/card`, data, { headers: { token: process.env.REACT_APP_API_TOKEN } });
 };

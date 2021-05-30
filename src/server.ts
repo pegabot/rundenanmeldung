@@ -5,13 +5,10 @@
  */
 
 import { json } from "body-parser";
-import cors from "cors";
-import { config } from "dotenv";
 import express from "express";
 import * as path from "path";
-import { sessionRouter } from "./api/session";
+import { CardRouter } from "./api/card";
 
-config();
 const app = express();
 
 app.use(json());
@@ -20,7 +17,7 @@ app.get("/ping", (_: express.Request, res: express.Response) => {
   res.send("Pong!");
 });
 
-app.use("/api/session", cors({ origin: "https://rundenaushang.pegabot.io", optionsSuccessStatus: 200 }), sessionRouter);
+app.use("/api/card", CardRouter);
 
 app.use(express.static(path.resolve(__dirname, "static")));
 app.use(express.static(path.resolve(__dirname, "../ui/build")));

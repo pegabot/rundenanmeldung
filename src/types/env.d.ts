@@ -8,5 +8,6 @@ declare namespace NodeJS {
   interface ProcessEnv {
     TRELLO_API_KEY: string;
     TRELLO_OAUTH_TOKEN: string;
+    REACT_APP_API_TOKEN: string;
   }
 }
