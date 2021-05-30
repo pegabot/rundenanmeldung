@@ -6,12 +6,20 @@
 
 import { json } from "body-parser";
 import express from "express";
+import rateLimit from "express-rate-limit";
 import * as path from "path";
 import { CardRouter } from "./api/card";
 
 const app = express();
 
+app.set("trust proxy", 1);
 app.use(json());
+app.use(
+  rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100,
+  }),
+);
 
 app.get("/ping", (_: express.Request, res: express.Response) => {
   res.send("Pong!");
