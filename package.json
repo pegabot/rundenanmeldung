@@ -1,6 +1,6 @@
 {
   "name": "pegabot-rundenanmeldung",
-  "version": "x.y.z",
+  "version": "0.0.1",
   "main": "build/server.js",
   "author": "The Pegabot authors",
   "license": "AGPL-3.0-only",
