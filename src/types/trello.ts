@@ -14,4 +14,5 @@ export type Card = {
   date: string;
   notes: string;
   requirements: string;
+  table: string;
 };

@@ -37,6 +37,11 @@ const dataSchema: JSONSchema7 = {
       type: "string",
       title: "In welchem Setting spielt dein Abenteuer?",
     },
+    table: {
+      type: "string",
+      title: "In welchem Discord-Kanal wird gespielt?",
+      description: "Solltest du noch keinen Kanal haben, lasse dieses Feld einfach leer.",
+    },
     desc: {
       type: "string",
       title: "Worum geht es in dem Abenteuer, das gespielt wird?",
@@ -103,6 +108,7 @@ export class CustomForm extends React.Component<{}, { completed: boolean; error:
         date: `${data.formData.startDate} - ${data.formData.endDate}`,
         notes: data.formData.notes || "keine",
         requirements: data.formData.requirements || "keine",
+        table: data.formData.table || "nicht vorhanden",
       });
     } catch (error) {
       console.log(error);

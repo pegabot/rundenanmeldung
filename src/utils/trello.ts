@@ -29,6 +29,8 @@ export const generateCard = async (card: Card): Promise<Error | undefined> => {
         - Beschreibung: 
           ${card.desc}
 
+        - Tisch: ${card.table}
+
         - System: ${card.system}
 
         - Setting: ${card.setting}
