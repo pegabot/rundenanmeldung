@@ -9,6 +9,7 @@ export type Card = {
   desc: string;
   gamemaster: string;
   system: string;
+  setting: string;
   players: number;
   date: string;
   notes: string;

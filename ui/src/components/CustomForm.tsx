@@ -22,30 +22,34 @@ const dataSchema: JSONSchema7 = {
   properties: {
     title: {
       type: "string",
-      title: "Gebe deiner Spielrunde einen Titel",
+      title: "Gib deiner Spielrunde einen Titel",
     },
     gamemaster: {
       type: "string",
-      title: "Spielleitung (Discord Name)",
+      title: "Wer leitet die Runde (Discord Name)?",
     },
     system: {
       type: "string",
       title: "Welches Rollenspielsystem wird gespielt?",
       enum: pnpSystems,
     },
+    setting: {
+      type: "string",
+      title: "In welchem Setting spielt dein Abenteuer?",
+    },
     desc: {
       type: "string",
-      title: "Beschreibe deine Spielrunde.",
+      title: "Worum geht es in dem Abenteuer, das gespielt wird?",
     },
     startDate: {
       type: "string",
       title: "Wann startet deine Spielrunde?",
-      format: "date-time",
+      description: "tag.monat.jahr stunde.minute",
     },
     endDate: {
       type: "string",
       title: "Wann endet deine Spielrunde?",
-      format: "date-time",
+      description: "tag.monat.jahr stunde.minute",
     },
     players: {
       type: "number",
@@ -94,8 +98,9 @@ export class CustomForm extends React.Component<{}, { completed: boolean; error:
         gamemaster: data.formData.gamemaster,
         desc: data.formData.desc,
         system: data.formData.system,
+        setting: data.formData.setting,
         players: data.formData.players,
-        date: `${new Date(data.formData.startDate).toLocaleString("de-de")}  - ${new Date(data.formData.endDate).toLocaleString("de-de")}`,
+        date: `${data.formData.startDate} - ${data.formData.endDate}`,
         notes: data.formData.notes || "keine",
         requirements: data.formData.requirements || "keine",
       });

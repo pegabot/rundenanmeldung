@@ -31,6 +31,8 @@ export const generateCard = async (card: Card): Promise<Error | undefined> => {
 
         - System: ${card.system}
 
+        - Setting: ${card.setting}
+
         - Anzahl Spielplätze: ${card.players}
 
         - Tag: ${card.date}
