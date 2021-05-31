@@ -1,8 +1,7 @@
 {
   "pnpSystems": [
-    "Achtung! Cthulhu,",
-    "Beyond the Wall",
-    "Contact",
+    "Achtung! Cthulhu",
+    "Beyond the Wall", 
     "Coriolis - Der Dritte Horizont",
     "Cthulhu",
     "Der Sprawl",
@@ -10,26 +9,21 @@
     "Dungeon Crawl Classics",
     "Dungeon World",
     "Dungeons & Dragons 5E",
-    "Dungeonslayer",
-    "Equinox",
     "Fate",
     "Fhtagn!",
     "Geh nicht in den Winterwald",
-    "Kagematsu",
     "Malmsturm",
     "Mutant Jahr Null",
     "Mythos World",
     "Numenera",
     "PBTA",
     "Schatten des Dämonenfürsten",
-    "Shadowrun 5",
     "Shadowrun 6",
     "So nicht, Schurke!",
-    "So Tief die schwere See",
     "Splittermond",
     "Star Trek Adventures",
     "Stargate RPG",
     "Talisman Adventure RPG",
-    "Vaesen"
+    "Vaesen",
   ]
 }
