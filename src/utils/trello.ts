@@ -42,7 +42,7 @@ export const generateCard = async (card: Card): Promise<Error | undefined> => {
         - Hinweis oder Warnungen: ${card.notes}
 
         - Technische Voraussetzungen: ${card.requirements}
-        `,
+        `.replace(/undefined/g, "nicht angegeben"),
       ),
     });
   } catch (error: any) {
