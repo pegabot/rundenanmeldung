@@ -56,7 +56,7 @@ const dataSchema: JSONSchema7 = {
     },
     requirements: {
       type: "string",
-      title: "Gibt es technische Vorraussetzungen (Discord, Roll20...)?",
+      title: "Gibt es technische Voraussetzungen (Discord, Roll20...)?",
     },
   },
 };
