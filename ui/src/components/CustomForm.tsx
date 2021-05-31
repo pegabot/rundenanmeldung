@@ -35,7 +35,7 @@ const dataSchema: JSONSchema7 = {
     },
     desc: {
       type: "string",
-      title: "Beschreibe dein Spielrunde.",
+      title: "Beschreibe deine Spielrunde.",
     },
     startDate: {
       type: "string",
@@ -69,6 +69,12 @@ const uiSchema = {
     "Melde deine Runde/n für die CONspiracy 6 über das nachfolgende Formular an und werde Teil des Teams! Als Spielleiter erhältst du eine Überraschung in Form unserer Goodie Bag. Deine Runde (oder Runden) wird zwei Wochen vor Start der CONspiracy auf dem CONspiracy Trello Board angekündigt.",
   desc: {
     "ui:widget": "textarea",
+  },
+  system: {
+    "ui:widget": "select",
+  },
+  players: {
+    "ui:widget": "select",
   },
 };
 

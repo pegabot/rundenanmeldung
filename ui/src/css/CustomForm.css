@@ -8,10 +8,6 @@
   margin-top: 2em;
 }
 
-.form .custom-select {
-  margin: 2%;
-}
-
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
   background-color: var(--cta-color);
   border-color: var(--cta-color);
