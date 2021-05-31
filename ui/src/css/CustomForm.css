@@ -16,3 +16,6 @@
   background-color: var(--cta-color);
   border-color: var(--cta-color);
 }
+.submit-cta {
+  margin-top: 2em;
+}

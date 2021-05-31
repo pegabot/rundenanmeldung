@@ -8,7 +8,8 @@ import { Theme as Bootstrap4Theme } from "@rjsf/bootstrap-4";
 import { FormProps, withTheme } from "@rjsf/core";
 import { JSONSchema7 } from "json-schema";
 import React from "react";
-import { Alert } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
+import { ArrowCounterclockwise } from "react-bootstrap-icons";
 import { sendData } from "../api/connector";
 import "../css/CustomForm.css";
 
@@ -16,18 +17,19 @@ const Form = withTheme(Bootstrap4Theme);
 
 const dataSchema: JSONSchema7 = {
   type: "object",
+  required: ["title", "gamemaster", "system", "desc", "startDate", "endDate", "players"],
   properties: {
-    name: {
+    title: {
       type: "string",
-      title: "Gebe deiner Spielrunde einen Namen",
+      title: "Gebe deiner Spielrunde einen Titel",
     },
-    sl: {
+    gamemaster: {
       type: "string",
       title: "Spielleitung (Discord Name)",
     },
     system: {
       type: "string",
-      title: "System",
+      title: "Welches Rollenspielsystem wird gespielt?",
     },
     desc: {
       type: "string",
@@ -47,6 +49,14 @@ const dataSchema: JSONSchema7 = {
       type: "number",
       title: "Wie viele Spieler können teilnehmen?",
       enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    },
+    notes: {
+      type: "string",
+      title: "Gibt es besondere Hinweise?",
+    },
+    requirements: {
+      type: "string",
+      title: "Gibt es technische Vorraussetzungen (Discord, Roll20...)?",
     },
   },
 };
@@ -68,17 +78,17 @@ export class CustomForm extends React.Component<{}, { completed: boolean; error:
 
   log = (type: any) => console.log.bind(console, type);
 
-  onSubmit = async (data: FormProps<any>) => {
+  onSubmit = async (data: FormProps<any>): Promise<void> => {
     try {
       await sendData({
-        name: data.formData.name,
-        gamemaster: data.formData.sl,
+        title: data.formData.title,
+        gamemaster: data.formData.gamemaster,
         desc: data.formData.desc,
         system: data.formData.system,
         players: data.formData.players,
-        date: `${data.formData.startDate}  - ${data.formData.endDate}`,
-        notes: "",
-        requirements: "",
+        date: `${new Date(data.formData.startDate).toLocaleString("de-de")}  - ${new Date(data.formData.endDate).toLocaleString("de-de")}`,
+        notes: data.formData.notes || "keine",
+        requirements: data.formData.requirements || "keine",
       });
     } catch (error) {
       console.log(error);
@@ -86,22 +96,43 @@ export class CustomForm extends React.Component<{}, { completed: boolean; error:
     }
 
     this.setState({ completed: true });
-    console.log(data);
   };
 
   onError = () => {
     this.setState({ error: true });
   };
 
+  reset = () => {
+    this.setState({ completed: false, error: false });
+  };
+
   render() {
     return (
       <div className="container">
         {this.state.error ? (
-          <Alert variant="danger">Ein Fehler ist aufgetreten, bitte versuche es später erneut!</Alert>
+          <>
+            <Alert variant="danger">Ein Fehler ist aufgetreten, bitte versuche es später erneut!</Alert>
+            <Button onClick={this.reset} type="submit" variant="warning">
+              <ArrowCounterclockwise />
+            </Button>
+          </>
         ) : this.state.completed ? (
-          <Alert variant="success">Vielen Dank für deine Einsendung!</Alert>
+          <>
+            <Alert variant="success">Vielen Dank für deine Einsendung!</Alert>
+            <Button onClick={this.reset} type="submit" variant="warning">
+              <ArrowCounterclockwise />
+            </Button>{" "}
+          </>
         ) : (
-          <Form className="form" uiSchema={uiSchema} schema={dataSchema} onChange={this.log("changed")} onSubmit={this.onSubmit} onError={this.onError} />
+          <>
+            <Form className="form" uiSchema={uiSchema} schema={dataSchema} onChange={this.log("changed")} onSubmit={this.onSubmit} onError={this.onError}>
+              <div className="submit-cta">
+                <Button type="submit" variant="primary">
+                  Absenden
+                </Button>
+              </div>
+            </Form>
+          </>
         )}
       </div>
     );

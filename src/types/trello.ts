@@ -5,7 +5,7 @@
  */
 
 export type Card = {
-  name: string;
+  title: string;
   desc: string;
   gamemaster: string;
   system: string;
