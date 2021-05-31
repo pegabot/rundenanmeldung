@@ -11,6 +11,7 @@ import React from "react";
 import { Alert, Button } from "react-bootstrap";
 import { ArrowCounterclockwise } from "react-bootstrap-icons";
 import { sendData } from "../api/connector";
+import { pnpSystems } from "../constants/pnp";
 import "../css/CustomForm.css";
 
 const Form = withTheme(Bootstrap4Theme);
@@ -30,6 +31,7 @@ const dataSchema: JSONSchema7 = {
     system: {
       type: "string",
       title: "Welches Rollenspielsystem wird gespielt?",
+      enum: pnpSystems,
     },
     desc: {
       type: "string",
@@ -63,7 +65,8 @@ const dataSchema: JSONSchema7 = {
 
 const uiSchema = {
   "ui:title": "CONspiracy Rundenanmeldung",
-  "ui:description": "Description",
+  "ui:description":
+    "Melde deine Runde/n für die CONspiracy 6 über das nachfolgende Formular an und werde Teil des Teams! Als Spielleiter erhältst du eine Überraschung in Form unserer Goodie Bag. Deine Runde (oder Runden) wird zwei Wochen vor Start der CONspiracy auf dem CONspiracy Trello Board angekündigt.",
   desc: {
     "ui:widget": "textarea",
   },
