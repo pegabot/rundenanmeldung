@@ -11,7 +11,7 @@ import React from "react";
 import { Alert, Button } from "react-bootstrap";
 import { ArrowCounterclockwise } from "react-bootstrap-icons";
 import { sendData } from "../api/connector";
-import { pnpSystems } from "../constants/pnp";
+import { pnpSystems } from "../constants/pnp.json";
 import "../css/CustomForm.css";
 
 const Form = withTheme(Bootstrap4Theme);
