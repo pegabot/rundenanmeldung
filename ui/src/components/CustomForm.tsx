@@ -18,7 +18,7 @@ const Form = withTheme(Bootstrap4Theme);
 
 const dataSchema: JSONSchema7 = {
   type: "object",
-  required: ["title", "gamemaster", "system", "desc", "startDate", "endDate", "players"],
+  required: ["title", "gamemaster", "system", "setting", "desc", "startDate", "endDate", "players"],
   properties: {
     title: {
       type: "string",
