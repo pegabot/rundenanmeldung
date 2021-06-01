@@ -14,12 +14,11 @@ const app = express();
 
 app.set("trust proxy", 1);
 app.use(json());
-app.use(
-  rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100,
-  }),
-);
+
+const rateLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100,
+});
 
 app.get("/", (_, res) => {
   res.redirect("https://pegasus.de/conspiracy/rundenanmeldung");
@@ -27,6 +26,7 @@ app.get("/", (_, res) => {
 
 app.use("/app", express.static(path.resolve(__dirname, "../ui/build")));
 
+app.use("/api", rateLimiter);
 app.use("/api/card", CardRouter);
 
 app.get("/ping", (_, res) => {
