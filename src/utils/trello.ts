@@ -18,7 +18,7 @@ trello.setOauthToken(process.env.TRELLO_OAUTH_TOKEN);
 export const generateCard = async (card: Card): Promise<Error | undefined> => {
   try {
     await trello.card.create({
-      name: card.title,
+      name: `${card.system} "${card.title} - ${card.date}"`,
       pos: "top",
       idList: "60b3d60869576f112d275efe",
       idCardSource: "60b3d9764f47c7232916a1e8",
