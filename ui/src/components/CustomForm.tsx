@@ -11,14 +11,13 @@ import React from "react";
 import { Alert, Button } from "react-bootstrap";
 import { ArrowCounterclockwise } from "react-bootstrap-icons";
 import { sendData } from "../api/connector";
-import { pnpSystems } from "../constants/pnp.json";
 import "../css/CustomForm.css";
 
 const Form = withTheme(Bootstrap4Theme);
 
 const dataSchema: JSONSchema7 = {
   type: "object",
-  required: ["title", "gamemaster", "system", "setting", "desc", "startDate", "endDate", "players"],
+  required: ["title", "gamemaster", "system", "setting", "desc", "date", "players"],
   properties: {
     title: {
       type: "string",
@@ -31,7 +30,6 @@ const dataSchema: JSONSchema7 = {
     system: {
       type: "string",
       title: "Welches Rollenspielsystem wird gespielt?",
-      enum: pnpSystems,
     },
     setting: {
       type: "string",
@@ -46,15 +44,10 @@ const dataSchema: JSONSchema7 = {
       type: "string",
       title: "Worum geht es in dem Abenteuer, das gespielt wird?",
     },
-    startDate: {
+    date: {
       type: "string",
-      title: "Wann startet deine Spielrunde?",
-      description: "tag.monat.jahr stunde.minute",
-    },
-    endDate: {
-      type: "string",
-      title: "Wann endet deine Spielrunde?",
-      description: "tag.monat.jahr stunde.minute",
+      title: "Wann startet deine Spielrunde und wie lange geht sie?",
+      description: "tag.monat.jahr stunde.minute (Spieldauer)",
     },
     players: {
       type: "number",
@@ -79,9 +72,6 @@ const uiSchema = {
   desc: {
     "ui:widget": "textarea",
   },
-  system: {
-    "ui:widget": "select",
-  },
   players: {
     "ui:widget": "select",
   },
@@ -105,7 +95,7 @@ export class CustomForm extends React.Component<{}, { completed: boolean; error:
         system: data.formData.system,
         setting: data.formData.setting,
         players: data.formData.players,
-        date: `${data.formData.startDate} - ${data.formData.endDate}`,
+        date: data.formData.date,
         notes: data.formData.notes || "keine",
         requirements: data.formData.requirements || "keine",
         table: data.formData.table || "nicht vorhanden",
