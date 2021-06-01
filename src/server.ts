@@ -21,12 +21,16 @@ app.use(
   }),
 );
 
-app.get("/ping", (_: express.Request, res: express.Response) => {
-  res.send("Pong!");
+app.get("/", (_, res) => {
+  res.redirect("https://pegasus.de/conspiracy/rundenanmeldung");
 });
+
+app.use("/app", express.static(path.resolve(__dirname, "../ui/build")));
 
 app.use("/api/card", CardRouter);
 
-app.use(express.static(path.resolve(__dirname, "../ui/build")));
+app.get("/ping", (_, res) => {
+  res.send("Pong!");
+});
 
 app.listen(process.env.PORT || 80, () => console.log(`💻 Webserver gestartet!`));
