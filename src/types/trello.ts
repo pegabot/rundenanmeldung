@@ -15,5 +15,4 @@ export type Card = {
   notes: string;
   requirements: string;
   table: string;
-  image?: string;
 };

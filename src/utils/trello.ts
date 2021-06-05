@@ -15,15 +15,18 @@ const trello = new TrelloNodeAPI();
 trello.setApiKey(process.env.TRELLO_API_KEY);
 trello.setOauthToken(process.env.TRELLO_OAUTH_TOKEN);
 
+const sanatize = (string: string) => string.replace(/undefined/g, "nicht angegeben");
+
 export const generateCard = async (card: Card): Promise<Error | undefined> => {
   try {
     await trello.card.create({
-      name: `${card.system} "${card.title} - ${card.date}"`,
+      name: sanatize(`${card.system} "${card.title} - ${card.date}"`),
       pos: "top",
       idList: "60b3d60869576f112d275efe",
       idCardSource: "60b3d9764f47c7232916a1e8",
       desc: stripIndents(
-        `
+        sanatize(
+          `
         - Spielleitung/Moderation: ${card.gamemaster}
 
         - Beschreibung: 
@@ -42,7 +45,8 @@ export const generateCard = async (card: Card): Promise<Error | undefined> => {
         - Hinweis oder Warnungen: ${card.notes}
 
         - Technische Voraussetzungen: ${card.requirements}
-        `.replace(/undefined/g, "nicht angegeben"),
+        `,
+        ),
       ),
     });
   } catch (error: any) {

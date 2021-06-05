@@ -11,6 +11,7 @@ import { Alert, Button } from "react-bootstrap";
 import { ArrowCounterclockwise } from "react-bootstrap-icons";
 import { sendData } from "../../api/connector";
 import "../../css/Form/Form.css";
+import { ErrorListTemplate } from "./ErrorListTemplate";
 import { dataSchema, uiSchema } from "./Schema";
 
 const FormGenerator = withTheme(Bootstrap4Theme);
@@ -39,15 +40,19 @@ export class Form extends React.Component<{}, { completed: boolean; error: boole
         table: data.formData.table || "nicht vorhanden",
       });
     } catch (error) {
-      console.log(error);
-      this.onError();
+      this.apiError(error);
     }
 
     this.setState({ completed: true });
   };
 
-  onError = () => {
+  apiError = (error?: Error) => {
     this.setState({ error: true });
+    console.log(error);
+  };
+
+  onError = (error?: Error) => {
+    console.log(error);
   };
 
   reset = () => {
@@ -80,6 +85,8 @@ export class Form extends React.Component<{}, { completed: boolean; error: boole
               onChange={this.log("changed")}
               onSubmit={this.onSubmit}
               onError={this.onError}
+              ErrorList={ErrorListTemplate}
+              showErrorList={true}
             >
               <div className="submit-cta">
                 <Button type="submit" variant="primary">
