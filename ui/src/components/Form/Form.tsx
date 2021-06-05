@@ -6,78 +6,16 @@
 
 import { Theme as Bootstrap4Theme } from "@rjsf/bootstrap-4";
 import { FormProps, withTheme } from "@rjsf/core";
-import { JSONSchema7 } from "json-schema";
 import React from "react";
 import { Alert, Button } from "react-bootstrap";
 import { ArrowCounterclockwise } from "react-bootstrap-icons";
-import { sendData } from "../api/connector";
-import "../css/CustomForm.css";
+import { sendData } from "../../api/connector";
+import "../../css/Form/Form.css";
+import { dataSchema, uiSchema } from "./Schema";
 
-const Form = withTheme(Bootstrap4Theme);
+const FormGenerator = withTheme(Bootstrap4Theme);
 
-const dataSchema: JSONSchema7 = {
-  type: "object",
-  required: ["title", "gamemaster", "system", "setting", "desc", "date", "players"],
-  properties: {
-    title: {
-      type: "string",
-      title: "Gib deiner Spielrunde einen Titel",
-    },
-    gamemaster: {
-      type: "string",
-      title: "Wer leitet die Runde (Discord Name)?",
-    },
-    system: {
-      type: "string",
-      title: "Welches Rollenspielsystem wird gespielt?",
-    },
-    setting: {
-      type: "string",
-      title: "In welchem Setting spielt dein Abenteuer?",
-    },
-    table: {
-      type: "string",
-      title: "In welchem Discord-Kanal wird gespielt?",
-      description: "Solltest du noch keinen Kanal haben, lasse dieses Feld einfach leer.",
-    },
-    desc: {
-      type: "string",
-      title: "Worum geht es in dem Abenteuer, das gespielt wird?",
-    },
-    date: {
-      type: "string",
-      title: "Wann startet deine Spielrunde und wie lange geht sie?",
-      description: "tag.monat.jahr stunde.minute (Spieldauer)",
-    },
-    players: {
-      type: "number",
-      title: "Wie viele Spieler können teilnehmen?",
-      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    },
-    notes: {
-      type: "string",
-      title: "Gibt es besondere Hinweise?",
-    },
-    requirements: {
-      type: "string",
-      title: "Gibt es technische Voraussetzungen (Discord, Roll20...)?",
-    },
-  },
-};
-
-const uiSchema = {
-  "ui:title": "CONspiracy Rundenanmeldung",
-  "ui:description":
-    "Melde deine Runde/n für die CONspiracy 6 über das nachfolgende Formular an und werde Teil des Teams! Als Spielleiter erhältst du eine Überraschung in Form unserer Goodie Bag. Deine Runde (oder Runden) wird zwei Wochen vor Start der CONspiracy auf dem CONspiracy Trello Board angekündigt.",
-  desc: {
-    "ui:widget": "textarea",
-  },
-  players: {
-    "ui:widget": "select",
-  },
-};
-
-export class CustomForm extends React.Component<{}, { completed: boolean; error: boolean }> {
+export class Form extends React.Component<{}, { completed: boolean; error: boolean }> {
   constructor(props: any) {
     super(props);
     this.state = { completed: false, error: false };
@@ -135,13 +73,20 @@ export class CustomForm extends React.Component<{}, { completed: boolean; error:
           </>
         ) : (
           <>
-            <Form className="form" uiSchema={uiSchema} schema={dataSchema} onChange={this.log("changed")} onSubmit={this.onSubmit} onError={this.onError}>
+            <FormGenerator
+              className="form"
+              uiSchema={uiSchema}
+              schema={dataSchema}
+              onChange={this.log("changed")}
+              onSubmit={this.onSubmit}
+              onError={this.onError}
+            >
               <div className="submit-cta">
                 <Button type="submit" variant="primary">
                   Absenden
                 </Button>
               </div>
-            </Form>
+            </FormGenerator>
           </>
         )}
       </div>

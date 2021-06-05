@@ -17,9 +17,9 @@ CardRouter.post("/", async (req, res) => {
   const cardData: Card = req.body;
   console.log(cardData);
 
-  const error = await generateCard(cardData);
-
-  if (error) return res.status(statusCode.INTERNAL_SERVER_ERROR).send("An error occured!");
-
+  if (process.env.NODE_ENV === "production") {
+    const error = await generateCard(cardData);
+    if (error) return res.status(statusCode.INTERNAL_SERVER_ERROR).send("An error occured!");
+  }
   return res.status(statusCode.OK).end();
 });

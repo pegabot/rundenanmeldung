@@ -5,13 +5,13 @@
  */
 
 import React from "react";
-import { CustomForm } from "./components/CustomForm";
+import { Form } from "./components/Form/Form";
 import "./css/App.css";
 
 function App() {
   return (
     <div className="App">
-      <CustomForm />
+      <Form />
     </div>
   );
 }
