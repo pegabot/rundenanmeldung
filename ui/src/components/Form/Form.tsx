@@ -38,6 +38,7 @@ export class Form extends React.Component<{}, { completed: boolean; error: boole
         notes: data.formData.notes || "keine",
         requirements: data.formData.requirements || "keine",
         table: data.formData.table || "nicht vorhanden",
+        friendly: data.formData.friendly,
       });
     } catch (error) {
       this.apiError(error);

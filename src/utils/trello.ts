@@ -38,6 +38,8 @@ export const generateCard = async (card: Card): Promise<Error | undefined> => {
 
         - Setting: ${card.setting}
 
+        - Einsteigerfreundlich: ${card.friendly ? "ja" : "nein"}
+
         - Anzahl Spielplätze: ${card.players}
 
         - Tag: ${card.date}

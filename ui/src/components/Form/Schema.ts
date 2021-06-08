@@ -31,6 +31,11 @@ export const dataSchema: JSONSchema7 = {
       title: "In welchem Discord-Kanal wird gespielt?",
       description: "Solltest du noch keinen Kanal haben, lasse dieses Feld einfach leer.",
     },
+    friendly: {
+      type: "boolean",
+      title: "Ist deine Runde einsteigerfreundlich?",
+      default: false,
+    },
     desc: {
       type: "string",
       title: "Worum geht es in dem Abenteuer, das gespielt wird?",
