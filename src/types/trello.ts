@@ -15,4 +15,5 @@ export type Card = {
   notes: string;
   requirements: string;
   table: string;
+  friendly: string;
 };
