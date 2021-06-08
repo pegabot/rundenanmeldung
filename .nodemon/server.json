@@ -1,0 +1,7 @@
+{
+  "verbose": true,
+  "watch": ["src/**/*.ts"],
+  "ignore": ["**/build/*"],
+  "ext": "ts",
+  "exec": "yarn build:server --sourceMap; yarn start"
+}

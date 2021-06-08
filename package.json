@@ -17,8 +17,10 @@
   ],
   "private": "true",
   "scripts": {
-    "dev": "nodemon .  --signal SIGINT",
-    "build": "yarn build:ui; rm -rf build; tsc",
+    "dev": "nodemon --config .nodemon/all.json .  --signal SIGINT",
+    "dev:server": "nodemon --config .nodemon/server.json .  --signal SIGINT",
+    "build": "yarn build:ui; yarn build:server",
+    "build:server": "rm -rf build; tsc",
     "build:ui": "cd ui; yarn build",
     "start": "node .",
     "generateEnvTypes": "npx gen-env-types .env -o src/types/env.d.ts -e ."
@@ -39,18 +41,5 @@
     "@types/find-config": "^1.0.0",
     "nodemon": "^2.0.7",
     "typescript": "^4.3.2"
-  },
-  "nodemonConfig": {
-    "verbose": true,
-    "watch": [
-      "src/**/*.ts",
-      "ui/**/*.ts",
-      "ui/**/*.tsx"
-    ],
-    "ignore": [
-      "**/build/*"
-    ],
-    "ext": "ts,tsx",
-    "exec": "yarn build --sourceMap; yarn start"
   }
 }
