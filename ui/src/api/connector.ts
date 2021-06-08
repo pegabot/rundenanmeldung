@@ -6,7 +6,8 @@
 
 import axios, { AxiosResponse } from "axios";
 import { Card } from "../../../src/types/trello";
+import { createToken } from "../utils/token";
 
 export const sendData = async (data: Card): Promise<AxiosResponse<any>> => {
-  return await axios.post(`/api/card`, data, { headers: { token: process.env.REACT_APP_API_TOKEN } });
+  return await axios.post(`/api/card`, data, { headers: { token: createToken() } });
 };

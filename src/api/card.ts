@@ -7,12 +7,13 @@
 import express from "express";
 import statusCode from "http-status-codes";
 import { Card } from "../types/trello";
+import { verifyToken } from "../utils/token";
 import { generateCard } from "../utils/trello";
 
 export const CardRouter = express();
 
 CardRouter.post("/", async (req, res) => {
-  if (req.headers["token"] !== process.env.REACT_APP_API_TOKEN) return res.status(statusCode.FORBIDDEN).send("Invalid API Token was used!");
+  if (!verifyToken((req.headers["token"] as string) || "")) return res.status(statusCode.FORBIDDEN).send("Invalid API Token was used!");
 
   const cardData: Card = req.body;
   console.log(cardData);

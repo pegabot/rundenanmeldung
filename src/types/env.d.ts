@@ -9,6 +9,6 @@ declare namespace NodeJS {
     NODE_ENV: string;
     TRELLO_API_KEY: string;
     TRELLO_OAUTH_TOKEN: string;
-    REACT_APP_API_TOKEN: string;
+    REACT_APP_API_SECRET: string;
   }
 }
