@@ -41,7 +41,7 @@ export class Form extends React.Component<{}, { completed: boolean; error: boole
         friendly: data.formData.friendly,
       });
     } catch (error) {
-      this.apiError(error);
+      this.apiError(error as Error);
     }
 
     this.setState({ completed: true });

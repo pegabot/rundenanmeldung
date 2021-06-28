@@ -42,8 +42,8 @@ export const dataSchema: JSONSchema7 = {
     },
     date: {
       type: "string",
-      title: "Wann startet deine Spielrunde und wie lange geht sie?",
-      description: "tag.monat.jahr stunde:minute (Spieldauer)",
+      title: "Wann startet deine Spielrunde und wann endet sie?",
+      description: "Tag.Monat.Jahr Stunde:minute - Stunde:Minute ",
     },
     players: {
       type: "number",

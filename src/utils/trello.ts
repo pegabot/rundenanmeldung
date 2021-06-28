@@ -20,7 +20,7 @@ const sanatize = (string: string) => string.replace(/undefined/g, "nicht angegeb
 export const generateCard = async (card: Card): Promise<Error | undefined> => {
   try {
     await trello.card.create({
-      name: sanatize(`${card.system} "${card.title} - ${card.date}"`),
+      name: sanatize(`${card.system.toUpperCase()} "${card.title} - ${card.date}"`),
       pos: "top",
       idList: "60b3d60869576f112d275efe",
       idCardSource: "60b3d9764f47c7232916a1e8",
