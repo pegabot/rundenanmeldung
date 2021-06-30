@@ -43,7 +43,7 @@ export const dataSchema: JSONSchema7 = {
     date: {
       type: "string",
       title: "Wann startet deine Spielrunde und wann endet sie?",
-      description: "Tag.Monat.Jahr Stunde:minute - Stunde:Minute ",
+      description: "Tag.Monat.Jahr Stunde:Minute - Stunde:Minute ",
     },
     players: {
       type: "number",
