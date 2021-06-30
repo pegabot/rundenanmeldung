@@ -64,7 +64,7 @@ export const dataSchema: JSONSchema7 = {
 export const uiSchema = {
   "ui:title": "CONspiracy Rundenanmeldung",
   "ui:description":
-    "Melde deine Runde/n für die CONspiracy 6 über das nachfolgende Formular an und werde Teil des Teams! Als Spielleiter erhältst du eine Überraschung in Form unserer Goodie Bag. Deine Runde (oder Runden) wird zwei Wochen vor Start der CONspiracy auf dem CONspiracy Trello Board angekündigt.",
+    "Melde deine Runde/n für die Road to CONspiracy über das nachfolgende Formular an und werde Teil des Teams! Als Spielleiter:in hast du die Möglichkeit, an unserer monatlichen Verlosung teilzunehmen: Jede Runde ist ein Los, das in den Topf wandert (bis zu einem Maximum von vier Runden). Zu gewinnen gibt es jeden Monat ein Paket von Pegasus Spiele im Wert von 50 Euro.",
   desc: {
     "ui:widget": "textarea",
   },
