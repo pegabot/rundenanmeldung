@@ -35,7 +35,7 @@
     "trello-node-api": "^0.0.9"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.10",
+    "@types/cors": "^2.8.11",
     "@types/express": "^4.17.12",
     "@types/express-rate-limit": "^5.1.2",
     "@types/find-config": "^1.0.0",
