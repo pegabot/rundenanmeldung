@@ -2,7 +2,7 @@
 # Rundenanmeldungsformular für die CONspiracy von Pegasus Spiele
 
 
-Dieses Tool injiziert Daten in neue Trello-Karten, welche am Ende als Spielrunden auf dem Trello Board von Pegasus Spiele ausgegeschrieben werden.
+Dieses Tool injiziert Daten in neue Trello-Karten, welche am Ende als Spielrunden auf dem Trello Board von Pegasus Spiele ausgehängt werden.
 Dabei können die Daten über das eingebaute Formular unter `/app` oder via `POST` Anfrage an `/api/card/` übermittelt werden.
 
  ## Lizenz
