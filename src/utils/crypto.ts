@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 - 2021 The Pegabot authors
+ * Copyright (c) 2020 - 2021 - 2022 The Pegabot authors
  * This code is licensed under MIT license (see LICENSE for details)
  */
 
