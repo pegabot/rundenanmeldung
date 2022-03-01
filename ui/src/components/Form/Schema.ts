@@ -64,7 +64,7 @@ export const dataSchema: JSONSchema7 = {
 export const uiSchema = {
   "ui:title": "CONspiracy Rundenanmeldung",
   "ui:description":
-    "Melde deine Runde/n für die CONspiracy 7 über das nachfolgende Formular an und werde Teil des Teams! Erhalte für deinen Einsatz die Team Goodie Bag für Workshop und Spielleitende.",
+    "Melde deine Runde/n für die CONspiracy 8 über das nachfolgende Formular an und werde Teil des Teams! Erhalte für deinen Einsatz die Team Goodie Bag für Workshop und Spielleitende.",
   desc: {
     "ui:widget": "textarea",
   },
