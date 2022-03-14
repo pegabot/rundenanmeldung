@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://register.pegabot.io/app",
   "dependencies": {
-    "@rjsf/bootstrap-4": "^4.0.1",
+    "@rjsf/bootstrap-4": "^4.1.0",
     "@rjsf/core": "^4.0.1",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
