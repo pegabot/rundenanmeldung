@@ -1528,10 +1528,10 @@
     uncontrollable "^7.2.1"
     warning "^4.0.3"
 
-"@rjsf/bootstrap-4@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@rjsf/bootstrap-4/-/bootstrap-4-4.1.0.tgz#772d82fb6b175a1e78d17a90bab327ce79ccd7eb"
-  integrity sha512-qtCJF7vldNlxvC2wBF85LHgLV0sMPefJTugxbHLs+z4sxIK6j8kaOvKf1aThxbrIWy/fud7pGwNGFztutfOijg==
+"@rjsf/bootstrap-4@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@rjsf/bootstrap-4/-/bootstrap-4-4.1.1.tgz#5683e455b123ff566a02a27f874b163c8d92a4c1"
+  integrity sha512-B7q1c7hXGOxV2kpvfLEuhVp/cfQ01k3Y192zo84zK2OsQ6CR0Ouk1bZ7yb7NSKmMb4KEWpbTIbaMahSfMXKIGQ==
   dependencies:
     react-icons "^3.10.0"
 
